@@ -1,43 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_utils.c                                       :+:      :+:    :+:   */
+/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaacosta <jaacosta@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/04 17:39:09 by jaacosta          #+#    #+#             */
-/*   Updated: 2024/12/09 20:19:25 by jaacosta         ###   ########.fr       */
+/*   Created: 2024/11/05 16:41:17 by jaacosta          #+#    #+#             */
+/*   Updated: 2024/11/06 19:10:31 by jaacosta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "push_swap.h"
+#include "libft.h"
 
-void	ft_putstr(char *s, int out)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	if (!s)
-		return ((void) NULL);
-	while (*s)
+	t_list	*tmp;
+
+	if (!del || !lst || !*lst)
+		return ;
+	while (*lst)
 	{
-		if (write(out, s++, 1) != -1)
-			write(out, s++, 1);
-	}		
-
-}
-
-int	ft_isdigit(int c);
-{
-	if (c > 47 && c < 58)
-		return (1);
-	else
-		return (0);
-}
-
-int	data_validation(char *str)
-{
-	while (*str)
-	{
-		if (*str != ' ' && !ft_isdigit(*str))
-			return (0);
-		str++;
+		tmp = (*lst)->next;
+		ft_lstdelone(*lst, del);
+		*lst = tmp;
 	}
-	return (1);
+	*lst = NULL;
 }

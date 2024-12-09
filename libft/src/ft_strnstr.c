@@ -1,43 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_utils.c                                       :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaacosta <jaacosta@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/04 17:39:09 by jaacosta          #+#    #+#             */
-/*   Updated: 2024/12/09 20:19:25 by jaacosta         ###   ########.fr       */
+/*   Created: 2024/09/18 18:19:48 by jaacosta          #+#    #+#             */
+/*   Updated: 2024/10/09 15:43:10 by jaacosta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "push_swap.h"
+#include "libft.h"
 
-void	ft_putstr(char *s, int out)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	if (!s)
-		return ((void) NULL);
-	while (*s)
+	const char	*b;
+	const char	*l;
+	size_t		lenrestant;
+
+	if (!*little)
+		return ((char *)big);
+	while (len > 0 && *big)
 	{
-		if (write(out, s++, 1) != -1)
-			write(out, s++, 1);
-	}		
-
-}
-
-int	ft_isdigit(int c);
-{
-	if (c > 47 && c < 58)
-		return (1);
-	else
-		return (0);
-}
-
-int	data_validation(char *str)
-{
-	while (*str)
-	{
-		if (*str != ' ' && !ft_isdigit(*str))
-			return (0);
-		str++;
+		b = big;
+		l = little;
+		lenrestant = len;
+		while (*l == *b && lenrestant > 0 && *l)
+		{
+			b++;
+			l++;
+			lenrestant--;
+		}
+		if (!*l)
+			return ((char *)big);
+		big++;
+		len--;
 	}
-	return (1);
+	return (NULL);
 }

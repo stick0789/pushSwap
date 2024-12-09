@@ -1,43 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_utils.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaacosta <jaacosta@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/04 17:39:09 by jaacosta          #+#    #+#             */
-/*   Updated: 2024/12/09 20:19:25 by jaacosta         ###   ########.fr       */
+/*   Created: 2024/10/05 17:35:05 by jaacosta          #+#    #+#             */
+/*   Updated: 2024/10/05 19:52:05 by jaacosta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "push_swap.h"
+#include "libft.h"
 
-void	ft_putstr(char *s, int out)
+int	ft_atoi(const char *nptr)
 {
-	if (!s)
-		return ((void) NULL);
-	while (*s)
+	int	y;
+	int	z;
+
+	y = 1;
+	z = 0;
+	while ((*nptr >= 9 && *nptr <= 13) || *nptr == 32)
+		nptr++;
+	if (*nptr == 45)
+		y *= -1;
+	if (*nptr == 43 || *nptr == 45)
+		nptr++;
+	while (*nptr >= '0' && *nptr <= '9')
 	{
-		if (write(out, s++, 1) != -1)
-			write(out, s++, 1);
-	}		
-
-}
-
-int	ft_isdigit(int c);
-{
-	if (c > 47 && c < 58)
-		return (1);
-	else
-		return (0);
-}
-
-int	data_validation(char *str)
-{
-	while (*str)
-	{
-		if (*str != ' ' && !ft_isdigit(*str))
-			return (0);
-		str++;
+		z = (*nptr - '0') + (z * 10);
+		nptr++;
 	}
-	return (1);
+	return (z * y);
 }

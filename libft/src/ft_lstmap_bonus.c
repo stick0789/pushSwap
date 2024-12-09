@@ -1,43 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_utils.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaacosta <jaacosta@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/04 17:39:09 by jaacosta          #+#    #+#             */
-/*   Updated: 2024/12/09 20:19:25 by jaacosta         ###   ########.fr       */
+/*   Created: 2024/11/05 16:57:59 by jaacosta          #+#    #+#             */
+/*   Updated: 2024/11/05 17:24:01 by jaacosta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "push_swap.h"
+#include "libft.h"
 
-void	ft_putstr(char *s, int out)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void(*del)(void *))
 {
-	if (!s)
-		return ((void) NULL);
-	while (*s)
+	t_list	*new;
+	t_list	*elem;
+
+	if (!f || !lst)
+		return (NULL);
+	new = NULL;
+	while (lst)
 	{
-		if (write(out, s++, 1) != -1)
-			write(out, s++, 1);
-	}		
-
-}
-
-int	ft_isdigit(int c);
-{
-	if (c > 47 && c < 58)
-		return (1);
-	else
-		return (0);
-}
-
-int	data_validation(char *str)
-{
-	while (*str)
-	{
-		if (*str != ' ' && !ft_isdigit(*str))
-			return (0);
-		str++;
+		elem = ft_lstnew(f(lst->content));
+		if (!elem)
+		{
+			ft_lstclear(&new, del);
+			return (NULL);
+		}
+		ft_lstadd_back(&new, elem);
+		lst = lst->next;
 	}
-	return (1);
+	return (new);
 }

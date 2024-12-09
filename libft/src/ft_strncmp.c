@@ -1,43 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_utils.c                                       :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaacosta <jaacosta@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/04 17:39:09 by jaacosta          #+#    #+#             */
-/*   Updated: 2024/12/09 20:19:25 by jaacosta         ###   ########.fr       */
+/*   Created: 2024/10/05 17:35:05 by jaacosta          #+#    #+#             */
+/*   Updated: 2024/10/05 19:58:30 by jaacosta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "push_swap.h"
+#include "libft.h"
 
-void	ft_putstr(char *s, int out)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	if (!s)
-		return ((void) NULL);
-	while (*s)
-	{
-		if (write(out, s++, 1) != -1)
-			write(out, s++, 1);
-	}		
-
-}
-
-int	ft_isdigit(int c);
-{
-	if (c > 47 && c < 58)
-		return (1);
-	else
+	if (n == 0)
 		return (0);
-}
-
-int	data_validation(char *str)
-{
-	while (*str)
+	while (n > 1 && *s1 && *s2 && *s1 == *s2)
 	{
-		if (*str != ' ' && !ft_isdigit(*str))
-			return (0);
-		str++;
+		s1++;
+		s2++;
+		n--;
 	}
-	return (1);
+	return ((unsigned char) *s1 - (unsigned char) *s2);
 }

@@ -1,43 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_utils.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaacosta <jaacosta@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/04 17:39:09 by jaacosta          #+#    #+#             */
-/*   Updated: 2024/12/09 20:19:25 by jaacosta         ###   ########.fr       */
+/*   Created: 2024/10/05 17:35:05 by jaacosta          #+#    #+#             */
+/*   Updated: 2024/10/05 19:55:25 by jaacosta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "push_swap.h"
+#include "libft.h"
 
-void	ft_putstr(char *s, int out)
+void	ft_putnbr_fd(int n, int fd)
 {
-	if (!s)
-		return ((void) NULL);
-	while (*s)
+	long	nbr;
+
+	nbr = n;
+	if (nbr < 0)
 	{
-		if (write(out, s++, 1) != -1)
-			write(out, s++, 1);
-	}		
-
-}
-
-int	ft_isdigit(int c);
-{
-	if (c > 47 && c < 58)
-		return (1);
-	else
-		return (0);
-}
-
-int	data_validation(char *str)
-{
-	while (*str)
-	{
-		if (*str != ' ' && !ft_isdigit(*str))
-			return (0);
-		str++;
+		ft_putchar_fd('-', fd);
+		nbr *= -1;
 	}
-	return (1);
+	if (nbr <= 9)
+		ft_putchar_fd(nbr + '0', fd);
+	else
+	{
+		ft_putnbr_fd(nbr / 10, fd);
+		ft_putnbr_fd(nbr % 10, fd);
+	}
 }

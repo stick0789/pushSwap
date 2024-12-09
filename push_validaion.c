@@ -1,43 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_utils.c                                       :+:      :+:    :+:   */
+/*   push_validaion.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaacosta <jaacosta@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/04 17:39:09 by jaacosta          #+#    #+#             */
-/*   Updated: 2024/12/09 20:19:25 by jaacosta         ###   ########.fr       */
+/*   Created: 2024/12/09 20:24:30 by jaacosta          #+#    #+#             */
+/*   Updated: 2024/12/09 20:38:22 by jaacosta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
-
-void	ft_putstr(char *s, int out)
-{
-	if (!s)
-		return ((void) NULL);
-	while (*s)
-	{
-		if (write(out, s++, 1) != -1)
-			write(out, s++, 1);
-	}		
-
-}
-
-int	ft_isdigit(int c);
-{
-	if (c > 47 && c < 58)
-		return (1);
-	else
-		return (0);
-}
-
 int	data_validation(char *str)
 {
-	while (*str)
+
+}
+int	input_validation(int argc, char *argv[])
+{
+	char	*str;
+
+	if (argc == 2)
 	{
-		if (*str != ' ' && !ft_isdigit(*str))
+		str = argv[1];
+		if (!data_validation(str))
+		{
+			ft_putstr("Error\n", 2);
 			return (0);
-		str++;
+		}
 	}
-	return (1);
+	else
+	{
+
+	}
 }

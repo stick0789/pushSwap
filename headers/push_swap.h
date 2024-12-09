@@ -1,43 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_utils.c                                       :+:      :+:    :+:   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaacosta <jaacosta@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/04 17:39:09 by jaacosta          #+#    #+#             */
-/*   Updated: 2024/12/09 20:19:25 by jaacosta         ###   ########.fr       */
+/*   Created: 2024/12/02 17:59:24 by jaacosta          #+#    #+#             */
+/*   Updated: 2024/12/09 20:44:59 by jaacosta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "push_swap.h"
 
-void	ft_putstr(char *s, int out)
+#ifndef	PUSH_SWAP_H
+# define PUSH_SWAP_H
+
+# include <stdio.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <fcntl.h>
+# include "libft.h"
+typedef struct nodo
 {
-	if (!s)
-		return ((void) NULL);
-	while (*s)
-	{
-		if (write(out, s++, 1) != -1)
-			write(out, s++, 1);
-	}		
+	int	dato;
+	struct	nodo *siguiente;
+} swapNodo;
 
-}
+void	ft_putstr(char *s, int out);
+int	data_validation(char *str);
 
-int	ft_isdigit(int c);
-{
-	if (c > 47 && c < 58)
-		return (1);
-	else
-		return (0);
-}
-
-int	data_validation(char *str)
-{
-	while (*str)
-	{
-		if (*str != ' ' && !ft_isdigit(*str))
-			return (0);
-		str++;
-	}
-	return (1);
-}
+#endif

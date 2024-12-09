@@ -1,0 +1,68 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jaacosta <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/09/25 18:02:27 by jaacosta          #+#    #+#              #
+#    Updated: 2024/11/06 18:46:39 by jaacosta         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+NAME = libft.a
+
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror
+AR = ar -rcs
+RM = rm -f
+
+SRCS = ft_strlen.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c \
+	   ft_isprint.c ft_tolower.c ft_toupper.c ft_strncmp.c ft_strchr.c \
+	   ft_strdup.c ft_strrchr.c ft_strnstr.c ft_memset.c ft_bzero.c \
+	   ft_memchr.c ft_memcpy.c ft_memcmp.c ft_memmove.c ft_strlcpy.c \
+	   ft_atoi.c ft_calloc.c ft_strlcat.c ft_substr.c ft_strjoin.c \
+	   ft_strtrim.c ft_split.c ft_itoa.c ft_strmapi.c ft_striteri.c \
+	   ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
+	   get_next_line.c get_next_line_utils.c get_next_line_bonus.c \
+	   get_next_line_utils_bonus.c
+
+B_SRCS = ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c \
+	 ft_lstlast_bonus.c ft_lstadd_back_bonus.c ft_lstdelone_bonus.c \
+	 ft_lstclear_bonus.c ft_lstiter_bonus.c ft_lstmap_bonus.c
+	 
+SRC_PATH = ./src/
+OBJ_PATH = ./tmp/
+H_PATH	 = ../headers
+
+HEADERS  = -I$(H_PATH)
+
+DIRSRC	 = $(addprefix $(SRC_PATH), $(SRCS))
+OBJS 	 = $(addprefix $(OBJ_PATH), $(SRCS:.c=.o))
+
+B_OBJS = $(B_SRCS:.c=.o)
+
+all:		$(NAME)
+
+$(NAME):	$(OBJS) libft.h
+		$(AR) $(NAME) $(OBJS)
+
+%.o: %.c	$(HEADER) Makefile
+		$(CC) $(CFLAGS) -c $< -o $@
+
+clean:
+		$(RM) $(OBJS) $(B_OBJS)
+
+fclean:		clean
+		$(RM) $(NAME) $(OBS) $(B_OBJS)
+
+re:
+		$(RM) $(NAME) $(OBJS) $(B_OBJS)
+		make all
+
+bonus:		$(OBJS) $(B_OBJS) libft.h
+		$(AR) $(NAME) $(OBJS) $(B_OBJS)
+
+
+.PHONY: all, clean, fclean, re, bonus
+
