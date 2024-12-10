@@ -10,13 +10,21 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
+
 int	data_validation(char *str)
 {
-
+	while (*str)
+	{
+		if (*str != ' ' && !ft_isdigit(*str))
+			return (0);
+		str++;
+	}
+	return (1);
 }
 int	input_validation(int argc, char *argv[])
 {
 	char	*str;
+	int			i;
 
 	if (argc == 2)
 	{
@@ -29,6 +37,15 @@ int	input_validation(int argc, char *argv[])
 	}
 	else
 	{
-
+		i =  1;
+		while (i < argc)
+		{
+			if (!data_validation(str))
+			{
+				ft_putstr("Error\n", 2);
+				return (1);
+			}	
+			i++;
+		}
 	}
 }
