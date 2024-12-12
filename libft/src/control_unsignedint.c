@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   control_unsignedint.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaacosta <jaacosta@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/02 17:59:24 by jaacosta          #+#    #+#             */
-/*   Updated: 2024/12/04 18:18:33 by jaacosta         ###   ########.fr       */
+/*   Created: 2024/10/22 17:55:11 by jaacosta          #+#    #+#             */
+/*   Updated: 2024/10/22 18:13:57 by jaacosta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "ft_printf.h"
 
-#ifndef	PUSH_SWAP_H
-# define PUSH_SWAP_H
-
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <fcntl.h>
-
-typedef struct nodo
+unsigned int	ctrl_uint(unsigned int n)
 {
-	int	dato;
-	struct	nodo *siguiente;
-} swapNodo;
+	unsigned int	size;
 
-void	ft_putstr(char *s, int out);
-int	data_validation(char *str);
-
-#endif
+	size = 0;
+	if (n > 9)
+	{
+		size = ctrl_uint(n / 10);
+		n = n % 10;
+	}
+	if (n <= 9)
+	{
+		if (ctrl_putchar(n + '0') != -1)
+			size++;
+	}
+	return (size);
+}

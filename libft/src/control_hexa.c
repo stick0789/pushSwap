@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   control_hexa.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaacosta <jaacosta@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/02 17:59:24 by jaacosta          #+#    #+#             */
-/*   Updated: 2024/12/09 20:44:59 by jaacosta         ###   ########.fr       */
+/*   Created: 2024/10/29 16:53:13 by jaacosta          #+#    #+#             */
+/*   Updated: 2024/10/29 16:53:15 by jaacosta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "ft_printf.h"
 
-#ifndef	PUSH_SWAP_H
-# define PUSH_SWAP_H
-
-# include <stdio.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include <fcntl.h>
-# include "libft.h"
-
-typedef struct nodo
+int	ctrl_hexa(unsigned int nbr, char fs)
 {
-	int	dato;
-	struct	nodo *siguiente;
-} swapNodo;
+	int		size;
+	char	*base;
 
-void	input_validation(int argc, char *argv[])
-/*void	ft_putstr(char *s, int out);
-int	data_validation(char *str);
-*/
-#endif
+	size = 0;
+	if (fs == 'x' || fs == 'p')
+		base = "0123456789abcdef";
+	else
+		base = "0123456789ABCDEF";
+	if (nbr >= 16)
+	{
+		size += ctrl_hexa(nbr / 16, fs);
+		if (size == -1)
+			return (-1);
+	}
+	if ((ctrl_putchar(base[nbr % 16]) == -1))
+		return (-1);
+	size++;
+	return (size);
+}

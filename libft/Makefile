@@ -24,12 +24,13 @@ SRCS = ft_strlen.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c \
 	   ft_atoi.c ft_calloc.c ft_strlcat.c ft_substr.c ft_strjoin.c \
 	   ft_strtrim.c ft_split.c ft_itoa.c ft_strmapi.c ft_striteri.c \
 	   ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
+	   ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c \
+	   ft_lstlast_bonus.c ft_lstadd_back_bonus.c ft_lstdelone_bonus.c \
+	   ft_lstclear_bonus.c ft_lstiter_bonus.c ft_lstmap_bonus.c \
+	   control_basics.c control_hexa.c control_unsignedint.c \
+	   control_voidptr.c ft_printf.c \
 	   get_next_line.c get_next_line_utils.c get_next_line_bonus.c \
 	   get_next_line_utils_bonus.c
-
-B_SRCS = ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c \
-	 ft_lstlast_bonus.c ft_lstadd_back_bonus.c ft_lstdelone_bonus.c \
-	 ft_lstclear_bonus.c ft_lstiter_bonus.c ft_lstmap_bonus.c
 	 
 SRC_PATH = ./src/
 OBJ_PATH = ./tmp/
@@ -40,29 +41,26 @@ HEADERS  = -I$(H_PATH)
 DIRSRC	 = $(addprefix $(SRC_PATH), $(SRCS))
 OBJS 	 = $(addprefix $(OBJ_PATH), $(SRCS:.c=.o))
 
-B_OBJS = $(B_SRCS:.c=.o)
+all:		$(OBJ_PATH) $(NAME)
 
-all:		$(NAME)
+$(OBJ_PATH):
+		mkdir -p $(OBJ_PATH)
 
-$(NAME):	$(OBJS) libft.h
+$(NAME):	$(OBJS)
 		$(AR) $(NAME) $(OBJS)
 
-%.o: %.c	$(HEADER) Makefile
-		$(CC) $(CFLAGS) -c $< -o $@
+$(OBJ_PATH)%.o: $(SRC_PATH)%.c Makefile $(H_PATH)
+		$(CC) $(CFLAGS) $(HEADERS) -MMD -c $< -o $@
 
 clean:
-		$(RM) $(OBJS) $(B_OBJS)
+		$(RM) $(OBJ_PATH)
 
-fclean:		clean
-		$(RM) $(NAME) $(OBS) $(B_OBJS)
+fclean:		
+		$(RM) $(NAME) $(OBJ_PATH)
 
 re:
-		$(RM) $(NAME) $(OBJS) $(B_OBJS)
-		make all
+		$(RM) $(NAME) $(OBJS)
+		make all --silent
 
-bonus:		$(OBJS) $(B_OBJS) libft.h
-		$(AR) $(NAME) $(OBJS) $(B_OBJS)
-
-
-.PHONY: all, clean, fclean, re, bonus
+.PHONY: all, clean, fclean, re
 

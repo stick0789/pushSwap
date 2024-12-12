@@ -100,8 +100,8 @@ char	**ft_split(char const *s, char c)
 	fill_words(result, s, c);
 	return (result);
 }
-/*
-static void	free_split(char **split)
+
+void	free_split(char **split)
 {
 	int	i;
 
@@ -113,7 +113,7 @@ static void	free_split(char **split)
 	}
 	free(split);
 }
-
+/*
 #include <stdio.h>
 int main() {
     char *s = "hola mundo de mier";
