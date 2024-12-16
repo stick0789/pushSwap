@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   push_stacks.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaacosta <jaacosta@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/02 17:59:24 by jaacosta          #+#    #+#             */
-/*   Updated: 2024/12/16 17:39:40 by jaacosta         ###   ########.fr       */
+/*   Created: 2024/12/16 17:35:20 by jaacosta          #+#    #+#             */
+/*   Updated: 2024/12/16 19:37:36 by jaacosta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "push_swap.h"
 
-#ifndef	PUSH_SWAP_H
-# define PUSH_SWAP_H
-
-# include <stdio.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include <fcntl.h>
-# include "libft.h"
-
-typedef struct s_list
+void	initStack(t_list **stack, int argc, char **argv)
 {
-	int	value;
-	int	index
-	struct	s_list *next;
-} t_list;
+	t_list	*new;
+	char	*args;
+	int		i;
 
-void	input_validation(int argc, char *argv[])
-/*void	ft_putstr(char *s, int out);
-int	data_validation(char *str);
-*/
-#endif
+	i = 0;
+	if (argc == 2)
+		args = ft_split(argv[1], ' ');
+	else
+	{
+		i = 1;
+		args = argv
+	}
+	while (args[i])
+	{
+		new = ft_lstnew(ft_atoi(argv[i]));
+		ft_lstadd_back(stack, new);
+		i++;
+	}
+}
