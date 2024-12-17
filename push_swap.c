@@ -6,7 +6,7 @@
 /*   By: jaacosta <jaacosta@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 18:13:36 by jaacosta          #+#    #+#             */
-/*   Updated: 2024/12/12 19:17:11 by jaacosta         ###   ########.fr       */
+/*   Updated: 2024/12/17 20:51:02 by jaacosta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"	
@@ -27,8 +27,13 @@ int	main(int argc, char *argv[])
 	*stack_b = NULL;
 	//primero pasar los datos a enteros, HEHCO con inputvalidation 
 	//asignar memoria a las listas e inicializarlas a null, HECHO
-	//verificar que no haya ninguno repetido
+	//verificar que no haya ninguno repetido HECHO
 	//que los datos recibidos pasen al stack a y crear un stack b para usarlo de ser necesario
-	//
+	init_stack(stack_a, argc, argv);
+	//verificamos que se encuentre ordenado 
+	if (is_sorted)
+	{
+
+	}
 	return (0);
 }

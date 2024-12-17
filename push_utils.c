@@ -6,38 +6,21 @@
 /*   By: jaacosta <jaacosta@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 17:39:09 by jaacosta          #+#    #+#             */
-/*   Updated: 2024/12/09 20:19:25 by jaacosta         ###   ########.fr       */
+/*   Updated: 2024/12/17 20:48:55 by jaacosta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
 
-void	ft_putstr(char *s, int out)
+int	is_sorted(t_list **stack)
 {
-	if (!s)
-		return ((void) NULL);
-	while (*s)
+	t_list	*head;
+
+	head = *stack;
+	while (head && head->next)
 	{
-		if (write(out, s++, 1) != -1)
-			write(out, s++, 1);
-	}		
-
-}
-
-int	ft_isdigit(int c);
-{
-	if (c > 47 && c < 58)
-		return (1);
-	else
-		return (0);
-}
-
-int	data_validation(char *str)
-{
-	while (*str)
-	{
-		if (*str != ' ' && !ft_isdigit(*str))
+		if (head->value > head->next->value)
 			return (0);
-		str++;
+		head = head->next;
 	}
 	return (1);
 }
