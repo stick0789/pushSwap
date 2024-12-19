@@ -6,7 +6,7 @@
 /*   By: jaacosta <jaacosta@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 17:59:24 by jaacosta          #+#    #+#             */
-/*   Updated: 2024/12/17 20:34:01 by jaacosta         ###   ########.fr       */
+/*   Updated: 2024/12/19 19:37:09 by jaacosta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct s_list
 
 void	input_validation(int argc, char *argv[]);
 void	init_stack(t_list **stack, int argc, char **argv);
+int	is_sorted(t_list **stack);
 /*void	ft_putstr(char *s, int out);
 int	data_validation(char *str);
 */

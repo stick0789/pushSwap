@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_utils.c                                       :+:      :+:    :+:   */
+/*   easy_sort.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaacosta <jaacosta@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/04 17:39:09 by jaacosta          #+#    #+#             */
-/*   Updated: 2024/12/19 19:46:15 by jaacosta         ###   ########.fr       */
+/*   Created: 2024/12/19 19:31:55 by jaacosta          #+#    #+#             */
+/*   Updated: 2024/12/19 19:45:49 by jaacosta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "headers/push_swap.h"
-
-int	is_sorted(t_list **stack)
+void	easy_sort(t_list **stack_a, t_list **stack_b)
 {
-	t_list	*head;
+	int	size;
 
-	head = *stack;
-	while (head && head->next)
-	{
-		if (head->value > head->next->value)
-			return (0);
-		head = head->next;
-	}
-	return (1);
+	size = ft_lstsize(*stack_a);
+	if (is_sorted(stack_a) || size <2)
+		return ;
+	if (size == 2)
+		swap_a(stack_a);
+	else if (size == 3)
+		sort_3val(stack_a);
+	else if (size == 4)
+		sort_4val(stack_a);
+	else if (size == 5)
+		sort_5val(stack_a);
 }
