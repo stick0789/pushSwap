@@ -6,7 +6,7 @@
 /*   By: jaacosta <jaacosta@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 20:24:30 by jaacosta          #+#    #+#             */
-/*   Updated: 2024/12/12 19:07:09 by jaacosta         ###   ########.fr       */
+/*   Updated: 2025/01/04 19:42:05 by jaacosta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -53,7 +53,7 @@ void	input_validation(int argc, char *argv[])
 	else
 	{
 		i =  1;
-		args = argv
+		args = argv;
 	}
 	while (args[i])
 	{

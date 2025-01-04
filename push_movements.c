@@ -6,7 +6,7 @@
 /*   By: jaacosta <jaacosta@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 19:44:29 by jaacosta          #+#    #+#             */
-/*   Updated: 2024/12/23 21:09:25 by jaacosta         ###   ########.fr       */
+/*   Updated: 2025/01/03 18:09:55 by jaacosta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "headers/push_swap"
@@ -72,5 +72,27 @@ int	rotate(t_list **stack)
 	*stack = head->next;
 	head->next = NULL;
 	tail->next = head;
+	return (0);
+}
+
+int	reverse_rotate(t_list **stack)
+{
+	t_list	*head;
+	t_list	*tail;
+	if (ft_listsize(*stack) < 2)
+		return (-1);
+	head = *stack;
+	tail = ft_lstlast(head);
+	while (head)
+	{
+		if (head->next->next == NULL)
+		{
+			head->next = NULL;
+			break
+		}
+		head = head->next;
+	}
+	tail->next = *stack;
+	*stack = tail;
 	return (0);
 }
