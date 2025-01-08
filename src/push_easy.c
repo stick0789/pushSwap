@@ -6,7 +6,7 @@
 /*   By: jaacosta <jaacosta@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:37:32 by jaacosta          #+#    #+#             */
-/*   Updated: 2025/01/07 19:55:51 by jaacosta         ###   ########.fr       */
+/*   Updated: 2025/01/08 19:19:33 by jaacosta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "headers/push_swap.h"
@@ -27,7 +27,7 @@ static int	get_min_val(t_list **stack, int val)
 	return (min_val);
 }
 
-void	sort_3(t_list	**stack_a)
+static void	sort_3(t_list	**stack_a)
 {
 	t_list	*head;
 	int	min;
@@ -64,7 +64,7 @@ void	sort_3(t_list	**stack_a)
 
 }
 
-void	sort_4(t_list **stack_a, t_list **stack_b)
+static void	sort_4(t_list **stack_a, t_list **stack_b)
 {
 	int	distance;
 
@@ -87,7 +87,7 @@ void	sort_4(t_list **stack_a, t_list **stack_b)
 	pa(stack_a, stack_b)
 }
 
-void	sort_5(t_list **stack_a, t_list **stack_b)
+static void	sort_5(t_list **stack_a, t_list **stack_b)
 {
 	int	distance;
 

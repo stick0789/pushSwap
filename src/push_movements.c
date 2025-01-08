@@ -6,12 +6,12 @@
 /*   By: jaacosta <jaacosta@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 19:44:29 by jaacosta          #+#    #+#             */
-/*   Updated: 2025/01/03 18:09:55 by jaacosta         ###   ########.fr       */
+/*   Updated: 2025/01/08 19:50:18 by jaacosta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "headers/push_swap"
 
-int swap(list **stack)
+int	swap(t_list **stack)
 {
 	t_list	*first;
 	t_list	*second;

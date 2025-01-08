@@ -26,10 +26,32 @@ typedef struct s_list
 	struct	s_list *next;
 } t_list;
 
+//Validations input
 void	input_validation(int argc, char *argv[]);
+//Stacks
 void	init_stack(t_list **stack, int argc, char **argv);
+void	free_stack(t_list **stack);
+//Ordenation Algorithms 
+void	easy_sort(t_list **stack_a, t_list **stack_b);
+void	radix_sort(t_list **stack_a, t_list **stack_b);
+//Utils
 int	is_sorted(t_list **stack);
-/*void	ft_putstr(char *s, int out);
-int	data_validation(char *str);
-*/
+int	get_distance(t_list **stack, int index);
+//Swap Movements
+int	swap(t_list **stack);
+int	push(t_list **stack_to, t_list **stack_from);
+int	rotate(t_list **stack);
+int	reverse_rotate(t_list **stack);
+int	sa(t_list **stack_a);
+int	sb(t_list **stack_b);
+int	ss(t_list **stack_a, t_list **stack_b);
+int	pa(t_list **stack_a, t_list **stack_b);
+int	pb(t_list **stack_a, t_list **stack_b);
+int	ra(t_list **stack_a);
+int	rb(t_list **stack_b);
+int	rr(t_list **stack_a, t_list **stack_b);
+int	rra(t_list **stack_a);
+int	rrb(t_list **stack_b);
+int	rrr(t_list **stack_a, t_list **stack_b);
+
 #endif

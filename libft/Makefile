@@ -50,7 +50,7 @@ $(NAME):	$(OBJS)
 		$(AR) $(NAME) $(OBJS)
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c Makefile $(H_PATH)
-		$(CC) $(CFLAGS) $(HEADERS) -MMD -c $< -o $@
+		$(CC) $(CFLAGS) $(HEADERS) -c $< -o $@
 
 clean:
 		$(RM) $(OBJ_PATH)

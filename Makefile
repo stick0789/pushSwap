@@ -10,33 +10,53 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = pushswap.a
+NAME = push_swap
 
 CC	= gcc
 CFLAGS	= -Wall -Wextra -Werror
 AR	= ar -rcs
-RM	= rm -f
+RM	= rm -rf
 
-SRC 	=
+SRCS 	= push_easy.c push_movements.c push_radix.c push_stacks.c push_utils.c \
+	  push_utils2.c push_utils3.c push_validation.c push_swap.c
+	  
+SRC_PATH = ./src/
+OBJ_PATH = ./tmp/
+H_PATH	 = ./headers
 
-HEADER	= push_swap.h
+HEADERS  = -I$(H_PATH)
 
-OBJS	= $(SRCS:.c=.o)
+DIRSRC	 = $(addprefix $(SRC_PATH), $(SRCS))
+OBJS 	 = $(addprefix $(OBJ_PATH), $(SRCS:.c=.o))
 
-all	:	$(NAME)
+all	:	makelib $(OBJ_PATH) $(NAME)
 
-$(NAME)	:	$(OBJS)	push_swap.h
-		$(AR) $(NAME) $(OBJS)
+makelib	:	
+		$(MAKE) --silent -C libft --no-print-directory
 
-%.o	:	%.c	$(HEADER) Makefile
-			$(CC) $(CFLAGS) -c $< -o $@
+$(OBJ_PATH):
+		mkdir -p $(OBJ_PATH)
+
+$(NAME)	:	$(OBJS)
+		$(CC) $(CFLAGS) $(OBJS) libft/libft.a -o $(NAME)
+
+$(OBJ_PATH)%.o	:	$(SRC_PATH)%.c Makefile libft/libft.a
+			mkdir -p $(dir $@)
+			$(CC) $(CFLAGS) $(HEADERS) -c $< -o $@
 
 clean	:
-		$(RM) $(OBJS)
+		$(RM) $(OBJ_PATH)
+		$(MAKE) --silent -C libft clean
 
-fclean	:	clean
-		$(RM) $(NAME) $(OBJS)
+fclean	:
+		$(RM) $(NAME) $(OBJ_PATH)
+		$(MAKE) --silent -C libft clean
 
 re	:
-		$(RM) $(NAME) $(OBJS)
-		make all
+		make fclean --silent
+		make all --silent
+		$(MAKE) all --silent -C libft
+		
+.PHONY	:	all clean fclean re
+
+.SILENT	:
