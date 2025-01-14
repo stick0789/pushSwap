@@ -18,7 +18,7 @@ AR	= ar -rcs
 RM	= rm -rf
 
 SRCS 	= push_easy.c push_movements.c push_radix.c push_stacks.c push_utils.c \
-	  push_utils2.c push_utils3.c push_validation.c push_swap.c
+	  push_utils2.c push_utils3.c push_validation.c push_swap.c push_list.c
 	  
 SRC_PATH = ./src/
 OBJ_PATH = ./tmp/
@@ -50,7 +50,7 @@ clean	:
 
 fclean	:
 		$(RM) $(NAME) $(OBJ_PATH)
-		$(MAKE) --silent -C libft clean
+		$(MAKE) --silent -C libft fclean
 
 re	:
 		make fclean --silent

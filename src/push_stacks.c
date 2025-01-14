@@ -11,24 +11,20 @@
 /* ************************************************************************** */
 #include "push_swap.h"
 
-static t_list	*find_min_val(t_list **stack)
+static t_l	*find_min_val(t_l **stack)
 {
-	t_list	*head;
-	t_list	*min_val;
+	t_l	*head;
+	t_l	*min_val;
 	int	f_min;
 
-	head = stack;
+	head = *stack;
 	min_val = NULL;
 	f_min = 0;
 	if (head)
 	{
 		while (head)
 		{
-			//busca por los valores que no se encuentren
-			// indexados (-1), y cuando f_min valga 0 y el
-			//  valor del num en la lista head sea menor
-			//  que el valor de la lista min_val
-			if ((head->inndex == -1) && (!f_min || head->value < min_val->value))
+			if ((head->index == -1) && (!f_min || head->value < min_val->value))
 			{
 				min_val = head;
 				f_min = 1;
@@ -36,31 +32,27 @@ static t_list	*find_min_val(t_list **stack)
 			head = head->next;
 		}
 	}
-	return (min_val)
+	return (min_val);
 }
 
-static void	set_index(t_list **stack)
+static void	set_index(t_l **stack)
 {
-	t_list	*head;
+	t_l	*head;
 	int	index;
 
 	index = 0;
-	//aqui encontramos el valor mas pequeno que se encuentre en el stack
 	head = find_min_val(stack);
 	while (head)
 	{
-		//aqui usamos la lista 'head' y vamos aumentando el indice de 0 a n 
-		//mientras vamos iterando sobre los valores encontrando el mas pequeno cada vez
-		//y asignandole un indice para cada valor
 		head->index = index++;
 		head = find_min_val(stack);
 	}
 }
 
-void	init_stack(t_list **stack, int argc, char **argv)
+void	init_stack(t_l **stack, int argc, char **argv)
 {
-	t_list	*new;
-	char	*args;
+	char	**args;
+	t_l		*new;
 	int		i;
 
 	i = 0;
@@ -69,15 +61,15 @@ void	init_stack(t_list **stack, int argc, char **argv)
 	else
 	{
 		i = 1;
-		args = argv
+		args = argv;
 	}
 	while (args[i])
 	{
-		new = ft_lstnew(ft_atoi(argv[i]));
+		new = ft_lstnew(ft_atoi(args[i]));
 		ft_lstadd_back(stack, new);
 		i++;
 	}
-	setIndex(stack);
+	set_index(stack);
 	if (argc == 2)
 		free_split(args);
 }

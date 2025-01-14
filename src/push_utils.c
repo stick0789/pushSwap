@@ -9,11 +9,11 @@
 /*   Updated: 2025/01/07 20:35:00 by jaacosta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "headers/push_swap.h"
+#include "push_swap.h"
 
-int	is_sorted(t_list **stack)
+int	is_sorted(t_l **stack)
 {
-	t_list	*head;
+	t_l	*head;
 
 	head = *stack;
 	while (head && head->next)
@@ -25,24 +25,24 @@ int	is_sorted(t_list **stack)
 	return (1);
 }
 
-int	get_distance(t_list **stack, int index)
+int	get_distance(t_l **stack, int index)
 {
-	t_list	*head;
+	t_l	*head;
 	int	distance;
-	
+
 	distance = 0;
 	head = *stack;
 	while (head)
 	{
 		if (head->index == index)
-			break;
+			break ;
 		distance++;
 		head = head->next;
 	}
 	return (distance);
 }
 
-int	sa(t_list **stack_a)
+int	sa(t_l **stack_a)
 {
 	if (swap(stack_a) == -1)
 		return (-1);
@@ -50,14 +50,15 @@ int	sa(t_list **stack_a)
 	return (0);
 }
 
-int	sb(t_list **stack_b)
+int	sb(t_l **stack_b)
 {
-	if (swap(stack_a) == -1)
+	if (swap(stack_b) == -1)
 		return (-1);
 	ft_putendl_fd("sb", 1);
+	return (0);
 }
 
-int	ss(t_list **stack_a, t_list **stack_b)
+int	ss(t_l **stack_a, t_l **stack_b)
 {
 	if ((ft_lstsize(*stack_a) < 2) || (ft_lstsize(*stack_b) < 2))
 		return (-1);

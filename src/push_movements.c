@@ -9,19 +9,20 @@
 /*   Updated: 2025/01/08 19:50:18 by jaacosta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "headers/push_swap"
+#include "push_swap.h"
 
-int	swap(t_list **stack)
+int	swap(t_l **stack)
 {
-	t_list	*first;
-	t_list	*second;
+	t_l	*first;
+	t_l	*second;
 	int	temp_value;
 	int	temp_index;
+
 	if (ft_lstsize(*stack) < 2)
 		return (-1);
 	first = *stack;
 	second = first->next;
-	if (!first && !next)
+	if (!first && !second)
 	{
 		ft_putstr_fd("Error swaping, node null find\n", 2);
 		return (-1);
@@ -29,18 +30,19 @@ int	swap(t_list **stack)
 	temp_value = first->value;
 	temp_index = first->index;
 	first->value = second->value;
-	first->index = second->index:
+	first->index = second->index;
 	second->value = temp_value;
 	second->index = temp_index;
 	return (0);
 }
 
-int	push(t_list **stack_to, t_list **stack_from)
+int	push(t_l **stack_to, t_l **stack_from)
 {
-	t_list	*tmp;
-	t_list	*head_to;
-	t_list	*head_from;
-	if (ft_listsize(*stack_from) == 0)
+	t_l	*tmp;
+	t_l	*head_to;
+	t_l	*head_from;
+
+	if (ft_lstsize(*stack_from) == 0)
 		return (-1);
 	head_to = *stack_to;
 	head_from = *stack_from;
@@ -61,10 +63,11 @@ int	push(t_list **stack_to, t_list **stack_from)
 	return (0);
 }
 
-int	rotate(t_list **stack)
+int	rotate(t_l **stack)
 {
-	t_list	*head;
-	t_list	*tail;
+	t_l	*head;
+	t_l	*tail;
+
 	if (ft_lstsize(*stack) < 2)
 		return (-1);
 	head = *stack;
@@ -75,11 +78,12 @@ int	rotate(t_list **stack)
 	return (0);
 }
 
-int	reverse_rotate(t_list **stack)
+int	reverse_rotate(t_l **stack)
 {
-	t_list	*head;
-	t_list	*tail;
-	if (ft_listsize(*stack) < 2)
+	t_l	*head;
+	t_l	*tail;
+
+	if (ft_lstsize(*stack) < 2)
 		return (-1);
 	head = *stack;
 	tail = ft_lstlast(head);
@@ -88,7 +92,7 @@ int	reverse_rotate(t_list **stack)
 		if (head->next->next == NULL)
 		{
 			head->next = NULL;
-			break
+			break ;
 		}
 		head = head->next;
 	}

@@ -9,44 +9,41 @@
 /*   Updated: 2024/12/19 19:46:01 by jaacosta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "headers/push_swap.h"	
+#include "push_swap.h"	
 
-static void	sort(t_list **stack_a, t_list **stack_b)
+static void	sort(t_l **stack_a, t_l **stack_b)
 {
 	if (ft_lstsize(*stack_a) <= 5)
 		easy_sort(stack_a, stack_b);
 	else
-		radix_sort(stack_a, stack_b)
+		radix_sort(stack_a, stack_b);
 }
 
 int	main(int argc, char *argv[])
 {
-	t_list	**stack_a;
-	t_list	**stack_b;
-	if (argc < 2 )
-	{
-		ft_putstr_fd("Error\n", 2);
+	t_l	**stack_a;
+	t_l	**stack_b;
+
+	if (argc < 2)
 		return (1);
-	}
-	input_validation(argc, argv);
-	stack_a = (t_list **)malloc(sizeof (t_list));
-	stack_b = (t_list **)malloc(sizeof (t_list));
-	*stack_a = NULL;
-	*stack_b = NULL;
-	//primero pasar los datos a enteros, HEHCO con inputvalidation 
-	//asignar memoria a las listas e inicializarlas a null, HECHO
-	//verificar que no haya ninguno repetido HECHO
-	//que los datos recibidos pasen al stack a y crear un stack b para usarlo de ser necesario
-	init_stack(stack_a, argc, argv);
-	//verificamos que se encuentre ordenado 
-	if (is_sorted)
+	if (input_validation(argc, argv) == 1)
 	{
-		free(stack_a);
-		free(stack_b);
-		return (0)
+		stack_a = (t_l **)malloc(sizeof (t_l));
+		stack_b = (t_l **)malloc(sizeof (t_l));
+		*stack_a = NULL;
+		*stack_b = NULL;
+		init_stack(stack_a, argc, argv);
+		if (is_sorted(stack_a))
+		{
+			free_stack(stack_a);
+			free_stack(stack_b);
+			return (0);
+		}
+		sort(stack_a, stack_b);
+		free_stack(stack_a);
+		free_stack(stack_b);
 	}
-	sort(stack_a, stack_b);
-	free(stack_a);
-	free(stack_b);
+	else
+		ft_putstr_fd("Error\n", 2);
 	return (0);
 }
