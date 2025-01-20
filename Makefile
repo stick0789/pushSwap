@@ -13,7 +13,7 @@
 NAME = push_swap
 
 CC	= gcc
-CFLAGS	= -Wall -Wextra -Werror
+CFLAGS	= -Wall -Wextra -Werror -g
 AR	= ar -rcs
 RM	= rm -rf
 

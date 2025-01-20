@@ -82,8 +82,10 @@ int	input_validation(int argc, char *argv[])
 	int		i;
 	int		result;
 
+	if (*(argv[1]) == '\0')
+		return (0);
 	args = initialize_args(argc, argv, &i);
-	if (args[1] == NULL)
+	if (args[0] == NULL)
 		return (0);
 	if (!args)
 		return (0);

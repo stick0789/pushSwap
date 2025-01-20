@@ -24,7 +24,7 @@ int	main(int argc, char *argv[])
 	t_l	**stack_a;
 	t_l	**stack_b;
 
-	if (argc < 2)
+	if (argc == 1)
 		return (1);
 	if (input_validation(argc, argv) == 1)
 	{
